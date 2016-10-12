@@ -15,15 +15,15 @@ def recursive_builder(function_to_next):
 def higher_order(function_to_upgrade, initial_condition):
     return lambda x,y: recursive_builder(curry_bimodal(function_to_upgrade,x))(initial_condition, y)
 
-add_function = recursive_builder(successor_function)
-multiply = higher_order(add_function, 0)
+add = recursive_builder(successor_function)
+multiply = higher_order(add, 0)
 exponential = higher_order(multiply, 1)
 tetration = higher_order(exponential, 1)
 
-assert 5 + 10 == add_function(5,10)
-assert 2 + 0 == add_function(2,0)
-assert 0 + 3 == add_function(0,3)
-assert 25 + 11 == add_function(25,11)
+assert 5 + 10 == add(5,10)
+assert 2 + 0 == add(2,0)
+assert 0 + 3 == add(0,3)
+assert 25 + 11 == add(25,11)
 assert 5 * 4 == multiply(5,4)
 assert 100 * 4 == multiply(100,4)
 assert 3 * 3 == multiply(3,3)
