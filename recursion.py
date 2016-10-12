@@ -1,7 +1,7 @@
 def successor_function(a):
     return a+1
 
-def curry_bimodal(function_to_curry, argument):
+def curry_dyad(function_to_curry, argument):
     return lambda x: function_to_curry(argument,x)
 
 def recursive_builder(function_to_next):
@@ -13,7 +13,7 @@ def recursive_builder(function_to_next):
     return recursive_function
 
 def higher_order(function_to_upgrade, initial_condition):
-    return lambda x,y: recursive_builder(curry_bimodal(function_to_upgrade,x))(initial_condition, y)
+    return lambda x,y: recursive_builder(curry_dyad(function_to_upgrade,x))(initial_condition, y)
 
 add = recursive_builder(successor_function)
 multiply = higher_order(add, 0)
